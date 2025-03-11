@@ -1,9 +1,5 @@
 package example01
 
-import (
-	"time"
-)
-
 type FooService struct {
 	pool *Pool
 }
@@ -19,11 +15,7 @@ func (s *FooService) CreateFoo() (*Foo, error) {
 	if err != nil {
 		return nil, err
 	}
-	f := &Foo{
-		ID:        *id,
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
-	}
+	f := NewFoo(*id)
 	s.pool.SetFoo(*id, *f)
 	return f, nil
 }
